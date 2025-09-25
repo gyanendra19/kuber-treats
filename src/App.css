@@ -1,18 +1,7 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap");
 
-@font-face {
-  font-family: 'ProximaNovaBold';
-  src: url('./assets/fonts/proximanova_bold.otf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'ProximaNovaRegular';
-  src: url('./assets/fonts/proximanova_regular.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-body{
-  font-family: "ProximaNovaBold";
+body {
+  font-family: "Bodoni Moda SC", serif;
+  font-weight: 500;
 }

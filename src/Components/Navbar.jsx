@@ -6,13 +6,21 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-logo">MyLogo</div>
       <ul className="navbar-links">
-        <li><a href="#home">About Us</a></li>
-        <li><a href="#about">Journal</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Portfolio</a></li>
+        <li>
+          <a href="#home">ABOUT US</a>
+        </li>
+        <li>
+          <a href="#about">JOURNAL</a>
+        </li>
+        <li>
+          <a href="#services">SERVICES</a>
+        </li>
+        <li>
+          <a href="#contact">PORTFOLIO</a>
+        </li>
       </ul>
       <div className="navbar-button">
-        <button>Contact</button>
+        <button>CONTACT</button>
       </div>
     </nav>
   );

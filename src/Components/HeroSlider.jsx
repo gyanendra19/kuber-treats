@@ -7,7 +7,7 @@ import image4 from "../assets/SliderImages/image4.jpg";
 import image5 from "../assets/SliderImages/image5.jpg";
 
 const images = [
-  `${image5}`
+  `${image5}`,
   // `${image1}`,
   // `${image2}`,
   // `${image3}`,
@@ -43,7 +43,7 @@ const HeroSlider = () => {
             onClick={() => goToSlide(idx)}
           ></span>
         ))}
-        </div>
+      </div>
     </div>
   );
 };
