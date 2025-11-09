@@ -131,7 +131,7 @@ const LandingPage = ({ currentSection, scrollToSection }) => {
             </motion.p>
 
             {/* GET IN TOUCH button */}
-            <motion.p
+            {/* <motion.p
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
@@ -143,7 +143,7 @@ const LandingPage = ({ currentSection, scrollToSection }) => {
               onClick={() => scrollToSection(4)}
             >
               GET IN TOUCH
-            </motion.p>
+            </motion.p> */}
           </>
         )}
       </div>

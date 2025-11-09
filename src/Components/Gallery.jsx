@@ -118,9 +118,9 @@ const Gallery = () => {
               className="overflow-hidden grid-col-2 rounded-xl [will-change:clip-path]"
             >
               <img
-                src="/kfc.webp"
+                src="/teaopen.JPG"
                 alt="Gallery 2"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover overflow-hidden hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
             <motion.div
@@ -131,7 +131,7 @@ const Gallery = () => {
               className="overflow-hidden grid-col-2 rounded-xl [will-change:clip-path] col-span-2"
             >
               <img
-                src="/kfc2.jpg"
+                src="/teaj.JPG"
                 alt="Gallery 2"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />

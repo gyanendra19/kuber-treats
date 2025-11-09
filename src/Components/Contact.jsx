@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const Contact = () => {
+const Contact = ({ scrollToSection }) => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -169,24 +169,31 @@ const Contact = () => {
               <h4 className="font-medium mb-4">MENU</h4>
               <ul className="space-y-2 text-gray-600">
                 <li>
-                  <a href="#" className="hover:text-black transition-colors">
+                  <button
+                    onClick={() => scrollToSection(2)}
+                    href="#"
+                    className="hover:text-black transition-colors"
+                  >
                     ABOUT US
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-black transition-colors">
+                  <button
+                    onClick={() => scrollToSection(3)}
+                    href="#"
+                    className="hover:text-black transition-colors"
+                  >
                     PORTFOLIO
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-black transition-colors">
-                    SERVICES
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-black transition-colors">
-                    JOURNAL
-                  </a>
+                  <button
+                    onClick={() => scrollToSection(4)}
+                    href="#"
+                    className="hover:text-black transition-colors"
+                  >
+                    GALLERY
+                  </button>
                 </li>
               </ul>
             </div>
@@ -196,23 +203,21 @@ const Contact = () => {
               <h4 className="font-medium mb-4">FOLLOW US</h4>
               <ul className="space-y-2 text-gray-600">
                 <li>
-                  <a href="#" className="hover:text-black transition-colors">
+                  <a
+                    target="_blank"
+                    href="https://www.instagram.com/kuber_capital01/"
+                    className="hover:text-black transition-colors"
+                  >
                     INSTAGRAM
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-black transition-colors">
-                    PINTEREST
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-black transition-colors">
-                    BEHANCE
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-black transition-colors">
-                    LINKEDIN
+                  <a
+                    target="_blank"
+                    href="https://www.facebook.com/people/Kuber-Capital/61561871009629/"
+                    className="hover:text-black transition-colors"
+                  >
+                    FACEBOOK
                   </a>
                 </li>
               </ul>
@@ -222,14 +227,14 @@ const Contact = () => {
             <div>
               <h4 className="font-medium mb-4">CONTACT</h4>
               <p className="text-gray-600 text-xs leading-relaxed mb-3">
-                RUA DE SÃO BENTO 542,
+                VEENA KUMARI
                 <br />
-                LISBON, PORTUGAL
+                SILIGURI, WEST BENGAL
               </p>
               <p className="text-gray-600 text-xs mb-1">
-                HELLO@SOLIHAUS.STUDIO
+                kubertreats@gmail.com
               </p>
-              <p className="text-gray-600 text-xs">+351 123 456 789</p>
+              <p className="text-gray-600 text-xs">+91 9476293800</p>
             </div>
           </div>
         </div>

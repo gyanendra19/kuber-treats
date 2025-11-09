@@ -105,46 +105,54 @@ const Navbar = ({ currentSection, scrollToSection }) => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            initial={{ y: "-100%", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "-100%", opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-98 backdrop-blur-xl z-[199]"
-          >
-            <div className="flex flex-col items-center justify-center h-full gap-10 px-8">
-              {navItems.map((item, index) => (
+          <>
+            <div
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute right-10 top-8 text-white text-4xl z-[200]"
+            >
+              X
+            </div>
+            <motion.div
+              initial={{ y: "-100%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: "-100%", opacity: 0 }}
+              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+              className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-98 backdrop-blur-xl z-[199]"
+            >
+              <div className="flex flex-col items-center justify-center h-full gap-10 px-8">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.name}
+                    onClick={() => handleNavClick(item.index)}
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.2 + index * 0.1,
+                      ease: "easeOut",
+                    }}
+                    className="text-white text-3xl font-medium tracking-widest transition-all duration-300 hover:text-yellow-400 hover:translate-x-2 bg-transparent border-none cursor-pointer"
+                  >
+                    {item.name}
+                  </motion.button>
+                ))}
+
                 <motion.button
-                  key={item.name}
-                  onClick={() => handleNavClick(item.index)}
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{
                     duration: 0.5,
-                    delay: 0.2 + index * 0.1,
+                    delay: 0.5,
                     ease: "easeOut",
                   }}
-                  className="text-white text-3xl font-medium tracking-widest transition-all duration-300 hover:text-yellow-400 hover:translate-x-2 bg-transparent border-none cursor-pointer"
+                  onClick={() => handleNavClick(4)}
+                  className="mt-8 px-12 py-4 bg-white text-black border-2 border-white text-base font-semibold tracking-widest transition-all duration-300 rounded hover:bg-yellow-400 hover:border-yellow-400 hover:scale-105 cursor-pointer"
                 >
-                  {item.name}
+                  CONTACT
                 </motion.button>
-              ))}
-
-              <motion.button
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.5,
-                  ease: "easeOut",
-                }}
-                onClick={() => handleNavClick(4)}
-                className="mt-8 px-12 py-4 bg-white text-black border-2 border-white text-base font-semibold tracking-widest transition-all duration-300 rounded hover:bg-yellow-400 hover:border-yellow-400 hover:scale-105 cursor-pointer"
-              >
-                CONTACT
-              </motion.button>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

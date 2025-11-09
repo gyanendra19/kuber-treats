@@ -307,59 +307,60 @@ function App() {
 
   return (
     <>
+      {/* Navbar - Always on top */}
       <Navbar
         currentSection={currentSection}
         scrollToSection={scrollToSection}
       />
 
-      <div
-        className={`fixed top-0 left-0 w-full h-screen ${
-          currentSection !== 0 ? "z-0" : "z-20"
-        }`}
-      >
+      {/* Landing Page Background */}
+      <div className="fixed top-0 left-0 w-full h-screen z-0 pointer-events-auto">
         <LandingPage
           currentSection={currentSection}
           scrollToSection={scrollToSection}
         />
       </div>
 
+      {/* Scrollable Container */}
       <div
         ref={containerRef}
         className="relative h-screen overflow-y-scroll z-10"
         style={{ scrollBehavior: "auto" }}
       >
+        {/* Spacer for landing page - No pointer events */}
         <div
           ref={(el) => (sectionsRef.current[0] = el)}
-          className="h-screen w-full"
+          className="h-screen w-full pointer-events-none"
         ></div>
 
+        {/* All other sections re-enable pointer events */}
         <div
           ref={(el) => (sectionsRef.current[1] = el)}
-          className="h-screen w-full"
+          className="h-screen w-full pointer-events-auto"
         >
-          <AboutUs />
+          <AboutUs scrollToSection={scrollToSection} />
         </div>
 
         <div
           ref={(el) => (sectionsRef.current[2] = el)}
-          className="h-screen w-full"
+          className="h-screen w-full pointer-events-auto"
         >
           <Portfolio />
         </div>
 
         <div
           ref={(el) => (sectionsRef.current[3] = el)}
-          className="h-screen w-full"
+          className="h-screen w-full pointer-events-auto"
         >
           <Gallery />
         </div>
 
         <div
           ref={(el) => (sectionsRef.current[4] = el)}
-          className="h-screen w-full transition-transform duration-1000"
+          className="h-screen w-full transition-transform duration-1000 pointer-events-auto"
           style={{ transform: "translateY(0%)" }}
         >
-          <Contact />
+          <Contact scrollToSection={scrollToSection} />
         </div>
       </div>
     </>
