@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import Gallery from "./Components/Gallery";
 import Contact from "./Components/Contact";
 import Navbar from "./Components/Navbar";
+import Directors from "./Components/Director";
 
 function App() {
   const containerRef = useRef(null);
@@ -338,25 +339,32 @@ function App() {
           ref={(el) => (sectionsRef.current[1] = el)}
           className="h-screen w-full pointer-events-auto"
         >
-          <AboutUs scrollToSection={scrollToSection} />
+          <Directors />
         </div>
 
         <div
           ref={(el) => (sectionsRef.current[2] = el)}
           className="h-screen w-full pointer-events-auto"
         >
-          <Portfolio />
+          <AboutUs scrollToSection={scrollToSection} />
         </div>
 
         <div
           ref={(el) => (sectionsRef.current[3] = el)}
           className="h-screen w-full pointer-events-auto"
         >
-          <Gallery />
+          <Portfolio />
         </div>
 
         <div
           ref={(el) => (sectionsRef.current[4] = el)}
+          className="h-screen w-full pointer-events-auto"
+        >
+          <Gallery />
+        </div>
+
+        <div
+          ref={(el) => (sectionsRef.current[5] = el)}
           className="h-screen w-full transition-transform duration-1000 pointer-events-auto"
           style={{ transform: "translateY(0%)" }}
         >

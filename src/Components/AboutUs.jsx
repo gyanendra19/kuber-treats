@@ -56,8 +56,15 @@ const AboutUs = ({ scrollToSection }) => {
             also strategically investing in renowned global food chains like
             KFC, Subway, and Domino's. With a strong focus on quality, customer
             satisfaction, and growth, we aim to expand our presence across
-            India's vibrant food and beverage industry. <br />
-            <br />
+            India's vibrant food and beverage industry.
+          </motion.p>
+          <motion.p
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="mt-4 hidden sm:block sm:mt-5 font-[Montserrat] ml-4 sm:ml-12 md:ml-20 w-[85%] sm:w-[70%] md:w-[600px] text-xs sm:text-base"
+          >
             Driven by innovation and a love for great taste, Kuber Treats Pvt.
             Ltd. is committed to building a diverse portfolio of trusted food
             brands that deliver consistent excellence. Our mission is to create
@@ -66,7 +73,7 @@ const AboutUs = ({ scrollToSection }) => {
           </motion.p>
 
           <button
-            onClick={() => scrollToSection(4)}
+            onClick={() => scrollToSection(5)}
             className="ml-4 sm:ml-12 md:ml-20 font-[Lora] w-[150px] sm:w-[180px] md:w-[200px] text-left border-b border-black text-base sm:text-lg md:text-xl mt-4 pb-1 hover:border-b-2 transition-all cursor-pointer"
           >
             Learn More

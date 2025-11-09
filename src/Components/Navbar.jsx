@@ -5,9 +5,10 @@ const Navbar = ({ currentSection, scrollToSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "ABOUT US", index: 1 },
-    { name: "PORTFOLIO", index: 2 },
-    { name: "GALLERY", index: 3 },
+    { name: "OUR TEAM", index: 1 },
+    { name: "ABOUT US", index: 2 },
+    { name: "PORTFOLIO", index: 3 },
+    { name: "GALLERY", index: 4 },
   ];
 
   const toggleMenu = () => {

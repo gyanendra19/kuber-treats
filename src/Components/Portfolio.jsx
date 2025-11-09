@@ -12,9 +12,9 @@ const Portfolio = () => {
       date: "03/2025",
       title: "PUCHKAMAN",
       description:
-        "Puchkaman is a vibrant fast-food chain that brings the authentic taste of street-style flavors to your plate. Known for its signature puchkas, chaats, and fusion snacks, every bite is a burst of spice, tang, and freshness. We blend traditional Indian flavors with a modern twist to create a truly unique experience. Whether you’re craving something crunchy, zesty, or satisfying, Puchkaman has it all. Step in for a quick bite or a full-on flavor adventure — where every dish tells a story of taste and fun!",
-      mainImage: "/gallery3.jpg",
-      secondaryImage: "/selfie-point.jpg",
+        "Puchkaman is a vibrant fast-food chain that brings the authentic taste of street-style flavors to your plate. Known for its signature puchkas, chaats, and fusion snacks, every bite is a burst of spice, tang, and freshness. We blend traditional Indian flavors with a modern twist to create a truly unique experience. Whether you’re craving something crunchy, zesty, or satisfying, Puchkaman has it all.",
+      mainImage: "/selfie-point.jpg",
+      secondaryImage: "/gallery3.jpg",
       caption: "Great Taste as Always",
       font: "Lora",
     },
@@ -23,7 +23,7 @@ const Portfolio = () => {
       date: "06/2024",
       title: "TEA JUNCTION",
       description:
-        "Tea Junction is your go-to destination for refreshing teas and delightful mocktails, crafted to awaken your senses. From soothing classic brews to vibrant, fruity blends, we serve every cup with love and freshness. Whether you’re here to relax, recharge, or catch up with friends, Tea Junction offers the perfect sip for every mood. Step in and experience the harmony of flavor, aroma, and good vibes — all in one place.",
+        "Tea Junction is your go-to destination for refreshing teas and delightful mocktails, crafted to awaken your senses. From soothing classic brews to vibrant, fruity blends, we serve every cup with love and freshness. Whether you’re here to relax, recharge, or catch up with friends, Tea Junction offers the perfect sip for every mood.",
       mainImage: "/teaopen.JPG",
       secondaryImage: "/tea.JPG",
       caption: "Coffee Excellence",
