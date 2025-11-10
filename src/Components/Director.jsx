@@ -107,7 +107,7 @@ const Directors = () => {
           >
             {/* Image Section */}
             <div className="w-full md:w-1/2">
-              <div className="relative overflow-hidden rounded-2xl h-[200px] sm:h-[360px] shadow-2xl max-w-md mx-auto">
+              <div className="relative overflow-hidden rounded-2xl h-[170px] sm:h-[360px] shadow-2xl max-w-md mx-auto">
                 <img
                   src={director.image}
                   alt={director.name}

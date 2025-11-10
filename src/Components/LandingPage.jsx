@@ -1,19 +1,37 @@
-import Navbar from "./Navbar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const LandingPage = ({ currentSection, scrollToSection }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const images = [
+    "/gallery5.jpg",
+    "/gallery2.jpg",
+    "/gallery3.jpg",
+    "/landing.jpg",
+  ];
+
+  useEffect(() => {
+    if (currentSection === 0) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [currentSection, images.length]);
+
   return (
     <main className="w-full z-[1] h-screen relative">
       <div className="relative h-screen w-full">
-        {/* Dark overlay with fade in */}
+        {/* Dark overlay */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.65 }}
+          animate={{ opacity: 0.75 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="w-full h-screen bg-black absolute z-[1]"
         ></motion.div>
 
-        {/* Background image with scale animation */}
+        {/* Background image */}
         <motion.img
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -24,127 +42,181 @@ const LandingPage = ({ currentSection, scrollToSection }) => {
         />
 
         {currentSection === 0 && (
-          <>
-            {/* FRANCHISE - Slide up from bottom */}
-            <div className="overflow-hidden z-20 absolute top-[25%] sm:top-[28%] md:top-[30%] left-1/2 sm:left-[40%] md:left-[35%] -translate-x-1/2 -translate-y-1/2 w-[90%] sm:w-auto">
-              <motion.h1
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                transition={{
-                  duration: 1.2,
-                  delay: 0.3,
-                  ease: [0.76, 0, 0.24, 1],
-                }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-[85px] tracking-wider font-[Lilita_One] text-white text-center sm:text-left"
+          <div className="absolute inset-0 z-20 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-20">
+            <div className="max-w-7xl w-full grid grid-cols-1 mt-4 md:mt-12 md:grid-cols-2 gap-8 md:gap-16 items-center">
+              {/* Left Side - Carousel */}
+              <motion.div
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                className="relative flex justify-center"
               >
-                FRANCHISE
-              </motion.h1>
-            </div>
+                <div className="relative group w-full max-w-[420px] sm:max-w-[360px] md:max-w-[420px]">
+                  <div className="absolute -top-4 -left-4 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-yellow-400/20 rounded-full blur-3xl"></div>
+                  <div className="absolute -bottom-4 -right-4 w-36 sm:w-40 md:w-48 h-36 sm:h-40 md:h-48 bg-orange-500/20 rounded-full blur-3xl"></div>
 
-            {/* Mobile: PARTNERSHIP as one word, Desktop: Split with decorative P */}
-            <div className="block sm:hidden overflow-hidden z-20 absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%]">
-              <motion.h1
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                transition={{
-                  duration: 1.2,
-                  delay: 0.8,
-                  ease: [0.76, 0, 0.24, 1],
-                }}
-                className="text-4xl tracking-wider font-[Lilita_One] text-white text-center"
+                  <div className="relative hidden md:block h-[250px] sm:h-[320px] md:h-[420px] w-full mx-auto">
+                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4 w-full h-full bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 transform rotate-3"></div>
+
+                    <div className="relative hidden md:block h-full w-full rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                      <AnimatePresence mode="wait">
+                        <motion.img
+                          key={currentImageIndex}
+                          src={images[currentImageIndex]}
+                          alt={`Slide ${currentImageIndex + 1}`}
+                          initial={{ opacity: 0, scale: 1.2, rotate: 5 }}
+                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                          exit={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                          transition={{ duration: 0.8, ease: "easeInOut" }}
+                          className="w-full h-full object-cover"
+                        />
+                      </AnimatePresence>
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+
+                      <div className="absolute top-3 sm:top-4 right-3 sm:right-4 px-2 sm:px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-white text-xs sm:text-sm font-[Montserrat]">
+                        {currentImageIndex + 1} / {images.length}
+                      </div>
+                    </div>
+
+                    {/* Dots */}
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
+                      {images.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentImageIndex(index)}
+                          className="group relative"
+                          aria-label={`Go to image ${index + 1}`}
+                        >
+                          <div
+                            className={`h-2 rounded-full transition-all duration-500 ${
+                              currentImageIndex === index
+                                ? "w-10 sm:w-12 bg-yellow-400"
+                                : "w-2 bg-white/30 group-hover:bg-white/60"
+                            }`}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Right Side */}
+              <motion.div
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                className="text-white mt-4 sm:mt-0 space-y-5 text-center md:text-left px-2 sm:px-0"
               >
-                PARTNERSHIP
-              </motion.h1>
+                <motion.div
+                  initial={{ scale: 0, rotate: -10 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
+                  className="inline-block"
+                >
+                  <span className="px-4 py-1.5 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 backdrop-blur-sm rounded-full text-xs md:text-sm font-[Montserrat] font-semibold border border-yellow-400/30 text-yellow-400">
+                    ✦ SINCE 2023
+                  </span>
+                </motion.div>
+
+                <div className="space-y-2">
+                  <div className="overflow-hidden">
+                    <motion.h2
+                      initial={{ y: "100%" }}
+                      animate={{ y: "0%" }}
+                      transition={{
+                        duration: 0.8,
+                        delay: 0.8,
+                        ease: [0.76, 0, 0.24, 1],
+                      }}
+                      className="text-lg sm:text-xl md:text-2xl font-[Dancing_Script] text-gray-300"
+                    >
+                      Who We Are
+                    </motion.h2>
+                  </div>
+
+                  <div className="overflow-hidden">
+                    <motion.h1
+                      initial={{ y: "100%" }}
+                      animate={{ y: "0%" }}
+                      transition={{
+                        duration: 0.8,
+                        delay: 1,
+                        ease: [0.76, 0, 0.24, 1],
+                      }}
+                      className="text-2xl sm:text-3xl lg:text-4xl font-[Montserrat] font-bold leading-tight"
+                    >
+                      KUBER TREATS{" "}
+                      <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                        PVT. LTD.
+                      </span>
+                    </motion.h1>
+                  </div>
+                </div>
+
+                <motion.p
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+                  className="text-xs sm:text-sm md:text-base font-[Montserrat] leading-relaxed text-gray-300 max-w-lg mx-auto md:mx-0"
+                >
+                  Transforming India's food landscape through strategic
+                  franchise partnerships and exceptional brand management.
+                  Building success stories, one outlet at a time.
+                </motion.p>
+
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
+                  className="hidden sm:grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2"
+                >
+                  {[
+                    { number: "20+", label: "Brands" },
+                    { number: "50+", label: "Outlets" },
+                    { number: "15+", label: "Cities" },
+                    { number: "10M+", label: "Served" },
+                  ].map((stat, index) => (
+                    <div
+                      key={index}
+                      className="text-center group hover:scale-110 transition-transform duration-300"
+                    >
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-[Montserrat] font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                        {stat.number}
+                      </h3>
+                      <p className="text-[10px] sm:text-xs font-[Montserrat] text-gray-400 mt-1">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </motion.div>
+
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 1.6, ease: "easeOut" }}
+                  className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 pt-4"
+                >
+                  <button
+                    onClick={() => scrollToSection(1)}
+                    className="group relative px-6 sm:px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-[Montserrat] font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-yellow-400/50"
+                  >
+                    <span className="relative z-10 text-sm sm:text-base">
+                      Explore More
+                    </span>
+                    <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  </button>
+                  <button
+                    onClick={() => scrollToSection(4)}
+                    className="px-6 sm:px-8 py-3 cursor-pointer bg-white/10 backdrop-blur-sm border border-white/30 text-white font-[Montserrat] font-semibold rounded-full hover:bg-white hover:text-black transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                  >
+                    Get In Touch
+                  </button>
+                </motion.div>
+              </motion.div>
             </div>
-
-            {/* Desktop: P in PARTNERSHIP - Fade and scale */}
-            <motion.h1
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.8,
-                ease: "easeOut",
-              }}
-              className="hidden sm:block z-20 tracking-wider font-[Dancing_Script] text-white absolute top-[42%] md:top-[45%] left-[43%] md:left-[47%] text-5xl md:text-7xl lg:text-8xl -translate-x-1/2 -translate-y-1/2"
-            >
-              P
-            </motion.h1>
-
-            {/* Desktop: ARTNERSHI - Slide from left */}
-            <motion.h1
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{
-                duration: 1,
-                delay: 1,
-                ease: [0.76, 0, 0.24, 1],
-              }}
-              className="hidden sm:block text-4xl md:text-6xl lg:text-[80px] z-20 tracking-wider font-[Lilita_One] text-white absolute top-[42%] md:top-[45%] left-[58%] md:left-[65%] -translate-x-1/2 -translate-y-1/2"
-            >
-              ARTNERSHI
-            </motion.h1>
-
-            {/* Desktop: P at end - Fade and rotate */}
-            <motion.h1
-              initial={{ opacity: 0, rotate: -180 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 1.3,
-                ease: "easeOut",
-              }}
-              className="hidden sm:block z-20 tracking-wider font-[Dancing_Script] text-white absolute top-[42%] md:top-[45%] left-[78%] md:left-[83%] text-5xl md:text-7xl lg:text-8xl -translate-x-1/2 -translate-y-1/2"
-            >
-              P
-            </motion.h1>
-
-            {/* FOCUS - Slide up from bottom */}
-            <div className="overflow-hidden z-20 absolute top-[51%] sm:top-[55%] md:top-[58%] left-1/2 sm:left-[52%] md:left-[54%] -translate-x-1/2 -translate-y-1/2 w-[90%] sm:w-auto">
-              <motion.h1
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                transition={{
-                  duration: 1.2,
-                  delay: 1.6,
-                  ease: [0.76, 0, 0.24, 1],
-                }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] tracking-wider font-[Lilita_One] text-white text-center sm:text-left"
-              >
-                FOCUS
-              </motion.h1>
-            </div>
-
-            {/* Description - Fade and slide up */}
-            <motion.p
-              initial={{ y: 40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 1,
-                delay: 2,
-                ease: "easeOut",
-              }}
-              className="text-sm sm:text-base md:text-[16px] z-20 w-[85%] sm:w-[60%] md:w-[40%] lg:w-[25%] text-white absolute top-[68%] sm:top-[70%] md:top-[74%] left-1/2 sm:left-[55%] md:left-[58%] -translate-x-1/2 -translate-y-1/2 font-[Montserrat] text-center sm:text-left px-4 sm:px-0"
-            >
-              Kuber Treats guides entrepreneurs to validated opportunities,
-              building local success on a foundation of national strength.
-            </motion.p>
-
-            {/* GET IN TOUCH button */}
-            {/* <motion.p
-              initial={{ y: 40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 1,
-                delay: 2,
-                ease: "easeOut",
-              }}
-              className="text-sm sm:text-base md:text-[16px] tracking-wider z-20 w-auto sm:w-[25%] md:w-[13%] text-white absolute top-[82%] sm:top-[84%] md:top-[86%] left-1/2 sm:left-[52%] -translate-x-1/2 -translate-y-1/2 font-[Montserrat] border-b border-white pb-1 cursor-pointer hover:opacity-80 transition-opacity"
-              onClick={() => scrollToSection(4)}
-            >
-              GET IN TOUCH
-            </motion.p> */}
-          </>
+          </div>
         )}
       </div>
     </main>

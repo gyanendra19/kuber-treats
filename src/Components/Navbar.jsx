@@ -5,10 +5,11 @@ const Navbar = ({ currentSection, scrollToSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "OUR TEAM", index: 1 },
+    { name: "BRANDS", index: 1 },
     { name: "ABOUT US", index: 2 },
-    { name: "PORTFOLIO", index: 3 },
-    { name: "GALLERY", index: 4 },
+    { name: "OUR VISION", index: 3 },
+    { name: "PORTFOLIO", index: 4 },
+    { name: "GALLERY", index: 5 },
   ];
 
   const toggleMenu = () => {
@@ -54,7 +55,7 @@ const Navbar = ({ currentSection, scrollToSection }) => {
             >
               <button
                 onClick={() => handleNavClick(item.index)}
-                className="text-white font-medium text-sm tracking-wider hover:text-yellow-400 transition-colors duration-300 bg-transparent border-none cursor-pointer"
+                className="text-white font-medium text-xs tracking-wider hover:text-yellow-400 transition-colors duration-300 bg-transparent border-none cursor-pointer"
               >
                 {item.name}
               </button>

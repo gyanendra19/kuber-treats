@@ -21,7 +21,7 @@ const Contact = ({ scrollToSection }) => {
   return (
     <main className="bg-white">
       {/* Contact Form Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 max-h-[65vh]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 md:max-h-[65vh] h-[100vh]">
         {/* Left Side - Text */}
         <div className="flex items-center justify-center p-6 lg:p-20">
           <div>
@@ -30,7 +30,7 @@ const Contact = ({ scrollToSection }) => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="text-4xl lg:text-6xl font-serif mb-2 md:mb-6"
+              className="text-2xl lg:text-6xl font-serif mb-2 md:mb-6"
               style={{ fontFamily: "serif" }}
             >
               LET'S BEGIN A
@@ -40,7 +40,7 @@ const Contact = ({ scrollToSection }) => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="text-4xl lg:text-6xl font-serif italic mb-4 md:mb-8"
+              className="text-2xl lg:text-6xl font-serif italic mb-4 md:mb-8"
               style={{ fontFamily: "serif" }}
             >
               CONVERSATION
@@ -53,9 +53,9 @@ const Contact = ({ scrollToSection }) => {
               className="text-gray-600 text-sm leading-relaxed max-w-md font-[montserrat]"
             >
               Tell us more about your space, your ideas,
-              <br />
+              <br className="hidden md:block" />
               and your aspirations. We'll guide you through
-              <br />
+              <br className="hidden md:block" />
               the next steps with care and intention.
             </motion.p>
           </div>
@@ -140,7 +140,7 @@ const Contact = ({ scrollToSection }) => {
       </div>
 
       {/* Footer Section */}
-      <div className="bg-[#f5f1e8] py-12 relative overflow-hidden">
+      <div className="bg-[#f5f1e8] hidden sm:block py-12 relative overflow-hidden">
         {/* Scrolling Text */}
         <div className="absolute top-1/2 -translate-y-1/2 whitespace-nowrap">
           <motion.div

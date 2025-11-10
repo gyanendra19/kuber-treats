@@ -7,6 +7,9 @@ import Gallery from "./Components/Gallery";
 import Contact from "./Components/Contact";
 import Navbar from "./Components/Navbar";
 import Directors from "./Components/Director";
+import Brands from "./Components/Brands";
+import OurVision from "./Components/Vision";
+import Footer from "./Components/Footer";
 
 function App() {
   const containerRef = useRef(null);
@@ -16,6 +19,14 @@ function App() {
   const [isAtEnd, setIsAtEnd] = useState(false);
   const scrollAccumulator = useRef(0);
   const scrollTimeout = useRef(null);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsSmallScreen(window.innerWidth < 640); // Tailwind's `sm`
+    handleResize(); // run once initially
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Smooth scroll animation function
   const smoothScrollTo = (targetPosition, duration = 1200) => {
@@ -314,18 +325,10 @@ function App() {
         scrollToSection={scrollToSection}
       />
 
-      {/* Landing Page Background */}
-      <div className="fixed top-0 left-0 w-full h-screen z-0 pointer-events-auto">
-        <LandingPage
-          currentSection={currentSection}
-          scrollToSection={scrollToSection}
-        />
-      </div>
-
       {/* Scrollable Container */}
       <div
         ref={containerRef}
-        className="relative h-screen overflow-y-scroll z-10"
+        className="relative h-screen overflow-y-scroll z-10 pointer-events-none"
         style={{ scrollBehavior: "auto" }}
       >
         {/* Spacer for landing page - No pointer events */}
@@ -333,13 +336,20 @@ function App() {
           ref={(el) => (sectionsRef.current[0] = el)}
           className="h-screen w-full pointer-events-none"
         ></div>
+        {/* Landing Page Background */}
+        <div className="fixed top-0 left-0 w-full h-screen z-0 pointer-events-auto">
+          <LandingPage
+            currentSection={currentSection}
+            scrollToSection={scrollToSection}
+          />
+        </div>
 
         {/* All other sections re-enable pointer events */}
         <div
           ref={(el) => (sectionsRef.current[1] = el)}
           className="h-screen w-full pointer-events-auto"
         >
-          <Directors />
+          <Brands />
         </div>
 
         <div
@@ -353,23 +363,38 @@ function App() {
           ref={(el) => (sectionsRef.current[3] = el)}
           className="h-screen w-full pointer-events-auto"
         >
-          <Portfolio />
+          <OurVision />
         </div>
 
         <div
           ref={(el) => (sectionsRef.current[4] = el)}
           className="h-screen w-full pointer-events-auto"
         >
-          <Gallery />
+          <Portfolio />
         </div>
 
         <div
           ref={(el) => (sectionsRef.current[5] = el)}
+          className="h-screen w-full pointer-events-auto"
+        >
+          <Gallery />
+        </div>
+
+        <div
+          ref={(el) => (sectionsRef.current[6] = el)}
           className="h-screen w-full transition-transform duration-1000 pointer-events-auto"
           style={{ transform: "translateY(0%)" }}
         >
           <Contact scrollToSection={scrollToSection} />
         </div>
+        {isSmallScreen && (
+          <div
+            ref={(el) => (sectionsRef.current[7] = el)}
+            className="h-screen w-full transition-transform duration-1000 pointer-events-auto"
+          >
+            <Footer />
+          </div>
+        )}
       </div>
     </>
   );

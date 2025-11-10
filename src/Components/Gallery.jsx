@@ -28,7 +28,7 @@ const Gallery = () => {
 
         {/* Horizontal Scrolling Gallery */}
         <div className="w-full h-[80vh] scroll-smooth scrollbar-hide">
-          <div className="grid grid-cols-2 md:grid-cols-5 auto-cols-[minmax(50px,1fr)] md:auto-cols-[minmax(200px,1fr)] gap-3 md:gap-8 auto-rows-[minmax(0,110px)] md:auto-rows-[minmax(0,130px)]">
+          <div className="grid grid-cols-2 md:grid-cols-5 auto-cols-[minmax(50px,1fr)] md:auto-cols-[minmax(200px,1fr)] gap-3 md:gap-8 auto-rows-[minmax(0,90px)] md:auto-rows-[minmax(0,130px)]">
             {/* Large image */}
             <motion.div
               initial={{ clipPath: "inset(0% 0% 50% 0%)" }}

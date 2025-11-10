@@ -16,7 +16,7 @@ const Portfolio = () => {
       mainImage: "/selfie-point.jpg",
       secondaryImage: "/gallery3.jpg",
       caption: "Great Taste as Always",
-      font: "Lora",
+      font: "Montserrat",
     },
     {
       id: 1,
@@ -27,7 +27,7 @@ const Portfolio = () => {
       mainImage: "/teaopen.JPG",
       secondaryImage: "/tea.JPG",
       caption: "Coffee Excellence",
-      font: "Lora",
+      font: "Montserrat",
     },
     {
       id: 2,
@@ -38,7 +38,7 @@ const Portfolio = () => {
       mainImage: "/landing.jpg",
       secondaryImage: "/waffle.jpg",
       caption: "Culinary Innovation",
-      font: "Lora",
+      font: "Montserrat",
     },
   ];
 
@@ -98,13 +98,13 @@ const Portfolio = () => {
           {/* Header Section */}
           <motion.h1
             variants={textVariants}
-            className="w-fit mx-auto font-light tracking-wider text-xl sm:text-2xl md:text-3xl mt-4 md:mt-8 font-[Dancing_Script]"
+            className="w-fit mx-auto font-light tracking-wider text-xl sm:text-2xl md:text-3xl md:mt-8 font-[Dancing_Script]"
           >
             Portfolio
           </motion.h1>
           <motion.h1
             variants={textVariants}
-            className="text-2xl sm:text-4xl md:text-5xl mt-3 md:mt-5 font-[Montserrat] w-fit mx-auto text-center px-4"
+            className="text-xl sm:text-4xl md:text-5xl mt-3 md:mt-5 font-[Montserrat] w-fit mx-auto text-center px-4"
           >
             BUSINESS THAT LASTS
           </motion.h1>
@@ -143,7 +143,7 @@ const Portfolio = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className={`w-full sm:w-[90%] md:w-[420px] font-[${currentPortfolio.font}] text-md md:text-base mt-2 md:mt-2 pr-4 md:pr-0 leading-relaxed`}
+                className={`w-full sm:w-[90%] md:w-[420px] font-[${currentPortfolio.font}] text-xs md:text-base mt-2 md:mt-2 pr-4 md:pr-0 leading-relaxed`}
               >
                 {currentPortfolio.description}
               </motion.p>
@@ -170,7 +170,7 @@ const Portfolio = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.5 }}
-            className="absolute right-10 md:right-12 bottom-10 md:bottom-8 flex items-center gap-4"
+            className="absolute right-10 md:right-12 bottom-6 md:bottom-8 flex items-center gap-4"
           >
             <span className="text-sm font-medium text-gray-600">
               {portfolioNumber + 1} / {portfolios.length}
