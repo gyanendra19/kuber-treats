@@ -392,7 +392,7 @@ function App() {
             ref={(el) => (sectionsRef.current[7] = el)}
             className="h-screen w-full transition-transform duration-1000 pointer-events-auto"
           >
-            <Footer />
+            <Footer scrollToSection={scrollToSection} />
           </div>
         )}
       </div>

@@ -37,7 +37,7 @@ const Navbar = ({ currentSection, scrollToSection }) => {
           className="text-xl font-bold z-[201] cursor-pointer"
           onClick={() => handleNavClick(0)}
         >
-          MyLogo
+          <img className="h-11" src="KTlogo.png" alt="" />
         </motion.div>
 
         {/* Desktop Nav Links */}

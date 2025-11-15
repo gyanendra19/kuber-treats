@@ -1,18 +1,6 @@
 import { motion } from "framer-motion";
 
 const AboutUs = ({ scrollToSection }) => {
-  // Brand logos array for the infinite loop
-  const brands = [
-    { src: "/kfclogo.png", alt: "KFC" },
-    { src: "/towlogo.png", alt: "TOW" },
-    { src: "/puchkalogo.jpg", alt: "Puchkaman" },
-    { src: "/tjlogo.png", alt: "Tea Junction" },
-    { src: "/kfclogo.png", alt: "KFC" }, // Duplicate for seamless loop
-    { src: "/towlogo.png", alt: "TOW" },
-    { src: "/puchkalogo.jpg", alt: "Puchkaman" },
-    { src: "/tjlogo.png", alt: "Tea Junction" },
-  ];
-
   return (
     <main className="h-screen z-[100] bg-[#f5f1e8] w-full relative overflow-hidden">
       <div className="h-full relative pt-6 md:pt-10 px-4 md:px-0 flex flex-col md:flex-row">
@@ -78,6 +66,73 @@ const AboutUs = ({ scrollToSection }) => {
           >
             Learn More
           </button>
+        </div>
+
+        {/* Right Side - Visual Elements */}
+        <div className="hidden md:flex md:w-1/2 items-center justify-center relative">
+          <div className="relative w-[500px] h-[500px]">
+            {/* Decorative circles */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 0.1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#8b6f47]"
+            />
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 0.15 }}
+              transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="absolute bottom-10 left-0 w-64 h-64 rounded-full bg-[#d4a574]"
+            />
+
+            {/* Central content cards */}
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="absolute top-20 left-10 bg-white p-6 rounded-lg shadow-lg w-48 z-10"
+            >
+              <h3 className="font-[Montserrat] font-bold text-3xl text-[#8b6f47]">
+                15+
+              </h3>
+              <p className="font-[Montserrat] text-sm mt-2 text-gray-700">
+                Years of Excellence
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="absolute top-64 right-10 bg-white p-6 rounded-lg shadow-lg w-48 z-10"
+            >
+              <h3 className="font-[Montserrat] font-bold text-3xl text-[#8b6f47]">
+                50+
+              </h3>
+              <p className="font-[Montserrat] text-sm mt-2 text-gray-700">
+                Franchise Locations
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="absolute bottom-0 left-24 bg-white p-6 rounded-lg shadow-lg w-52 z-10"
+            >
+              <h3 className="font-[Montserrat] font-bold text-3xl text-[#8b6f47]">
+                1000+
+              </h3>
+              <p className="font-[Montserrat] text-sm mt-2 text-gray-700">
+                Happy Customers Daily
+              </p>
+            </motion.div>
+          </div>
         </div>
       </div>
     </main>

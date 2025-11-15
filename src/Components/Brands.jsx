@@ -135,17 +135,17 @@ const Brands = () => {
     },
     {
       id: 19,
-      name: "Theobroma",
-      logo: "/theobroma.png",
+      name: "Red Hot Chilli Peppers",
+      logo: "/red-pepper.png",
       category: "Bakery",
       description: "Premium bakery and patisserie chain",
     },
     {
       id: 20,
-      name: "Naturals",
-      logo: "/naturals.png",
-      category: "Ice Cream",
-      description: "Natural ice cream parlour chain",
+      name: "Giva",
+      logo: "/giva.jpeg",
+      category: "Jewellery",
+      description: "Jewellery Chain",
     },
   ];
 
@@ -163,42 +163,6 @@ const Brands = () => {
     selectedCategory === "All"
       ? seamlessBrands
       : seamlessBrands.filter((brand) => brand.category === selectedCategory);
-
-  // Brands per page: 5 on desktop, 2 on mobile
-  // const brandsPerPage = 5;
-  // const totalPages = Math.ceil(filteredBrands.length / brandsPerPage);
-
-  // // Get current page brands
-  // const startIndex = currentPage * brandsPerPage;
-  // const currentBrands = filteredBrands.slice(
-  //   startIndex,
-  //   startIndex + brandsPerPage
-  // );
-
-  // // Slide variants
-  // const slideVariants = {
-  //   enter: (direction) => ({
-  //     x: direction > 0 ? 1000 : -1000,
-  //     opacity: 0,
-  //   }),
-  //   center: {
-  //     x: 0,
-  //     opacity: 1,
-  //   },
-  //   exit: (direction) => ({
-  //     x: direction < 0 ? 1000 : -1000,
-  //     opacity: 0,
-  //   }),
-  // };
-
-  // const paginate = (newDirection) => {
-  //   setDirection(newDirection);
-  //   if (newDirection === 1) {
-  //     setCurrentPage((prev) => (prev + 1) % totalPages);
-  //   } else {
-  //     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
-  //   }
-  // };
 
   // Reset page when category changes
   const handleCategoryChange = (category) => {
@@ -237,29 +201,40 @@ const Brands = () => {
           </motion.p>
         </div>
 
-        {/* Category Filter */}
         <motion.div
-          initial={{ y: -20, opacity: 0 }}
+          initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="flex flex-wrap justify-center gap-2 md:gap-3 pb-10 px-4 max-w-full mx-auto"
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="flex justify-center items-center mt-4 gap-2 md:gap-16 pb-12 px-4"
         >
-          {categories.map((category, index) => (
-            <button
-              key={index}
-              onClick={() => handleCategoryChange(category)}
-              className={`px-4 md:px-6 py-1.5 md:py-2 rounded-full font-[Montserrat] text-xs md:text-sm transition-all duration-300 ${
-                selectedCategory === category
-                  ? "bg-black text-white shadow-lg scale-105"
-                  : "bg-white text-gray-700 hover:bg-gray-100 shadow-md"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+          <div className="text-center">
+            <p className="text-2xl md:text-4xl font-bold font-[Montserrat] text-[#8b6f47]">
+              20+
+            </p>
+            <p className="text-xs md:text-sm font-[Montserrat] text-gray-600 mt-1">
+              Brand Partners
+            </p>
+          </div>
+          <div className="w-px h-12 bg-gray-300"></div>
+          <div className="text-center">
+            <p className="text-2xl md:text-4xl font-bold font-[Montserrat] text-[#8b6f47]">
+              30+
+            </p>
+            <p className="text-xs md:text-sm font-[Montserrat] text-gray-600 mt-1">
+              Active Locations
+            </p>
+          </div>
+          <div className="w-px h-12 bg-gray-300"></div>
+          <div className="text-center">
+            <p className="text-2xl md:text-4xl font-bold font-[Montserrat] text-[#8b6f47]">
+              5+
+            </p>
+            <p className="text-xs md:text-sm font-[Montserrat] text-gray-600 mt-1">
+              Years Experience
+            </p>
+          </div>
         </motion.div>
       </div>
-      {/* Header Section */}
 
       {/* Infinite Scrolling Brand Row */}
       <div className="relative w-full overflow-hidden py-10">
@@ -323,53 +298,6 @@ const Brands = () => {
             </motion.div>
           ))}
         </motion.div>
-      </div>
-
-      {/* Page Indicator & Stats */}
-      <div className="pb-6 px-4">
-        {/* Page Dots */}
-        {/* <div className="flex justify-center gap-2 mb-2">
-          {Array.from({ length: totalPages }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setDirection(index > currentPage ? 1 : -1);
-                setCurrentPage(index);
-              }}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                currentPage === index
-                  ? "w-8 bg-black"
-                  : "w-2 bg-gray-300 hover:bg-gray-400"
-              }`}
-              aria-label={`Go to page ${index + 1}`}
-            />
-          ))}
-        </div> */}
-
-        {/* Stats */}
-        {/* <div className="max-w-4xl mx-auto grid grid-cols-4 gap-2 md:gap-4">
-            {[
-              { number: "20+", label: "Brands" },
-              { number: "500+", label: "Outlets" },
-              { number: "15+", label: "Cities" },
-              { number: "10M+", label: "Customers" },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="bg-white rounded-lg md:rounded-xl shadow-md p-2 md:p-4 text-center"
-              >
-                <h3 className="text-lg md:text-2xl font-[Montserrat] font-bold text-gray-900">
-                  {stat.number}
-                </h3>
-                <p className="text-xs md:text-sm font-[Montserrat] text-gray-600">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </div> */}
       </div>
     </main>
   );

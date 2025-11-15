@@ -161,13 +161,22 @@ const Contact = ({ scrollToSection }) => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
             {/* Logo */}
             <div>
-              <h3 className="font-bold text-lg mb-6">KUBER TREATS</h3>
+              <img className="h-28" src="/KTlogo.png" alt="" />
             </div>
 
             {/* Menu Column */}
             <div>
               <h4 className="font-medium mb-4">MENU</h4>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-1 text-gray-600">
+                <li>
+                  <button
+                    onClick={() => scrollToSection(1)}
+                    href="#"
+                    className="hover:text-black transition-colors"
+                  >
+                    BRANDS
+                  </button>
+                </li>
                 <li>
                   <button
                     onClick={() => scrollToSection(2)}
@@ -183,12 +192,21 @@ const Contact = ({ scrollToSection }) => {
                     href="#"
                     className="hover:text-black transition-colors"
                   >
-                    PORTFOLIO
+                    OUR VISION
                   </button>
                 </li>
                 <li>
                   <button
                     onClick={() => scrollToSection(4)}
+                    href="#"
+                    className="hover:text-black transition-colors"
+                  >
+                    PORTFOLIO
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(5)}
                     href="#"
                     className="hover:text-black transition-colors"
                   >
