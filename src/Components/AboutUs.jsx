@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const AboutUs = ({ scrollToSection }) => {
   return (
     <main className="h-screen z-[100] bg-[#f5f1e8] w-full relative overflow-hidden">
-      <div className="h-full relative pt-6 md:pt-10 px-4 md:px-0 flex flex-col md:flex-row">
+      <div className="h-full relative pt-16 md:pt-10 px-4 md:px-0 flex flex-col md:flex-row">
         {/* Left Side - Content Section */}
         <div className="relative z-10 w-full md:w-1/2 flex flex-col justify-center">
           <motion.h1
@@ -35,7 +35,7 @@ const AboutUs = ({ scrollToSection }) => {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.5 }}
-            className="mt-4 sm:mt-5 font-[Montserrat] ml-4 sm:ml-12 md:ml-20 w-[85%] sm:w-[70%] md:w-[600px] text-xs sm:text-base"
+            className="mt-4 sm:mt-5 font-[Montserrat] ml-4 sm:ml-12 md:ml-20 w-[85%] sm:w-[70%] md:w-[600px] text-sm sm:text-base"
           >
             At <strong>Kuber Treats Pvt. Ltd.</strong>, we are passionate about
             bringing exceptional food experiences to people by investing in and

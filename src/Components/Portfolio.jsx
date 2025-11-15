@@ -170,7 +170,7 @@ const Portfolio = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.5 }}
-            className="absolute right-10 md:right-12 bottom-6 md:bottom-8 flex items-center gap-4"
+            className="absolute right-10 md:right-12 bottom-[12%] md:bottom-8 flex items-center gap-4"
           >
             <span className="text-sm font-medium text-gray-600">
               {portfolioNumber + 1} / {portfolios.length}
